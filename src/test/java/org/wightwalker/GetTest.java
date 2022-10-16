@@ -10,10 +10,9 @@ public class GetTest extends BaseTest {
   @Test
   public void getPage1Test() {
     RestAssured.given()
-      .log().all()
-      .get()
-      .then().assertThat()
-      .statusCode(200)
+      .when().get()
+      .then().log().all()
+      .assertThat().statusCode(200)
       .body("page", Matchers.equalTo(1));
   }
 
@@ -22,10 +21,9 @@ public class GetTest extends BaseTest {
     RestAssured.given()
       .queryParams("page", "2")
       .body("")
-      .log().all()
       .when().get()
-      .then().assertThat()
-      .statusCode(200)
+      .then().log().all()
+      .assertThat().statusCode(200)
       .body("page", Matchers.equalTo(2));
   }
 }
