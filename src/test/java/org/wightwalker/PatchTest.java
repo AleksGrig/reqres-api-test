@@ -9,7 +9,7 @@ public class PatchTest extends BaseTest {
 
   @Test
   public void patchTest() {
-    RestAssured.basePath = "2";
+    RestAssured.basePath = Paths.UPDATE_USER.replace("{id}", "2");
     String userData = """
       {
         "name":"august",

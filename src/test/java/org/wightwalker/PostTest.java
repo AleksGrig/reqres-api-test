@@ -10,13 +10,10 @@ public class PostTest extends BaseTest {
   
   @Test
   public void postTest() {
-    String userData = """
-      {
-        "name":"morpheus",
-        "job":"leader"
-      }
-      """;
-    RestAssured.given().body(userData)
+    RestAssured.basePath = Paths.CREATE_USER;
+    User user = new User("user@users.com", "User", 
+                         "Userov", "https://reqres.in/img/faces/1-image.jpg");
+    RestAssured.given().body(user)
       .when().post()
       .then().log().all()
       .assertThat().statusCode(201)

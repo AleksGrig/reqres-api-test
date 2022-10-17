@@ -9,6 +9,7 @@ public class GetTest extends BaseTest {
 
   @Test
   public void getPage1Test() {
+    RestAssured.basePath = Paths.ALL_USERS;
     RestAssured.given()
       .when().get()
       .then().log().all()
@@ -18,6 +19,7 @@ public class GetTest extends BaseTest {
 
   @Test
   public void getPage2Test() {
+    RestAssured.basePath = Paths.ALL_USERS;
     RestAssured.given()
       .queryParams("page", "2")
       .body("")
