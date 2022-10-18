@@ -28,4 +28,14 @@ public class GetTest extends BaseTest {
       .assertThat().statusCode(200)
       .body("page", Matchers.equalTo(2));
   }
+
+  @Test
+  public void getUser() {
+    RestAssured.basePath = Paths.USER.replace("{id}", "2");
+    RestAssured.given()
+      .when().get()
+      .then().log().all()
+      .assertThat().statusCode(200)
+      .body("data.email", Matchers.equalTo("janet.weaver@reqres.in"));
+  }
 }
