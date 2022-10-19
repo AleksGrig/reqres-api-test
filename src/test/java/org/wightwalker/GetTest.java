@@ -9,9 +9,8 @@ public class GetTest extends BaseTest {
 
   @Test
   public void getPage1Test() {
-    RestAssured.basePath = Paths.ALL_USERS;
     RestAssured.given()
-      .when().get()
+      .when().get(Paths.ALL_USERS)
       .then().log().all()
       .assertThat().statusCode(200)
       .body("page", Matchers.equalTo(1));
@@ -19,11 +18,10 @@ public class GetTest extends BaseTest {
 
   @Test
   public void getPage2Test() {
-    RestAssured.basePath = Paths.ALL_USERS;
     RestAssured.given()
       .queryParams("page", "2")
       .body("")
-      .when().get()
+      .when().get(Paths.ALL_USERS)
       .then().log().all()
       .assertThat().statusCode(200)
       .body("page", Matchers.equalTo(2));
@@ -31,9 +29,8 @@ public class GetTest extends BaseTest {
 
   @Test
   public void getUser() {
-    RestAssured.basePath = Paths.USER.replace("{id}", "2");
     RestAssured.given()
-      .when().get()
+      .when().get(Paths.USER.replace("{id}", "2"))
       .then().log().all()
       .assertThat().statusCode(200)
       .body("data.email", Matchers.equalTo("janet.weaver@reqres.in"));

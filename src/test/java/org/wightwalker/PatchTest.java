@@ -9,7 +9,6 @@ public class PatchTest extends BaseTest {
 
   @Test
   public void patchTest() {
-    RestAssured.basePath = Paths.UPDATE_USER.replace("{id}", "2");
     String userData = """
       {
         "name":"august",
@@ -17,7 +16,7 @@ public class PatchTest extends BaseTest {
       }
       """;
     RestAssured.given().body(userData)
-      .patch()
+      .patch(Paths.UPDATE_USER.replace("{id}", "2"))
       .then().log().all()
       .assertThat().statusCode(200)
       .body("updatedAt", Matchers.notNullValue());
