@@ -30,7 +30,8 @@ public class GetTest extends BaseTest {
   @Test
   public void getUser() {
     RestAssured.given()
-      .when().get(Paths.USER.replace("{id}", "2"))
+      .pathParam("id", 2)
+      .when().get(Paths.USER)
       .then().log().all()
       .assertThat().statusCode(200)
       .body("data.email", Matchers.equalTo("janet.weaver@reqres.in"));

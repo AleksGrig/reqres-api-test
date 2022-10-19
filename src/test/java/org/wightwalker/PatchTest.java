@@ -9,14 +9,14 @@ public class PatchTest extends BaseTest {
 
   @Test
   public void patchTest() {
-    String userData = """
+    RestAssured.given()
+      .body("""
       {
         "name":"august",
         "job":"emperor"
-      }
-      """;
-    RestAssured.given().body(userData)
-      .patch(Paths.UPDATE_USER.replace("{id}", "2"))
+      }""")
+      .pathParam("id", 2)
+      .patch(Paths.UPDATE_USER)
       .then().log().all()
       .assertThat().statusCode(200)
       .body("updatedAt", Matchers.notNullValue());
