@@ -10,7 +10,7 @@ public class GetTest extends BaseTest {
 
   public void getPage1Test() {
     given()
-      .when()
+    .when()
       .get(Paths.ALL_USERS)
     .then()
       .log().all()
