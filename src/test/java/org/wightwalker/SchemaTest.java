@@ -8,8 +8,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 public class SchemaTest {
   
   public void schemaValidationTest() {
-    given()
-    .when()
+    when()
       .get(Paths.ALL_USERS)
     .then()
       .assertThat().body(matchesJsonSchemaInClasspath("schema.json"))
