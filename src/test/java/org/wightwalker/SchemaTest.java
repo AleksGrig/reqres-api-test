@@ -5,7 +5,7 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 @Test
-public class SchemaTest {
+public class SchemaTest extends BaseTest{
   
   public void schemaValidationTest() {
     when()
