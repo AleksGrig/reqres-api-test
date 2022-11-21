@@ -4,8 +4,11 @@
 
 `git clone https://github.com/AleksGrig/reqres-api-test.git`
 
-### run tests
-`mvn clean test` 
+### run tests and generating allure report
+```
+mvn clean test
+allure serve
+```
 
 ## *Libraries*
 - rest-assured - library for testing and validating REST services in Java
